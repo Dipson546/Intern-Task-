@@ -97,57 +97,98 @@
             </div>
         </header>
         <section class="content-main">
-            <div class="content-header">
-                <h2 class="content-title">Edit Profile</h2>
+            <div class="row">
+                <div class="col-9">
+
+
+                    <div class="content-header">
+                        <h2 class="content-title">Add New Movie's</h2>
+
+                        <form action="{{ route('back.movie.store') }}" method="post"
+
+                            enctype="multipart/form-data">
+                            @csrf
+                            <div>
+                                <button class="btn btn-md rounded font-sm hover-up">Publish</button>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="mb-4">
+                                <label for="name" class="form-label">Movie Name</label>
+                                <input type="text" placeholder="Type here"
+                                    class="form-control @error('name') is-invalid @enderror" id="name"
+                                    name="name">
+                                @error('name')
+                                    <span class="invalid-feedback">
+                                        {{ $message }}
+                                    </span>
+                                @enderror
+                            </div>
+                            
+                            
+                        </div>
+                    </div> <!-- card end// -->
+                    
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div>
+                                <label class="form-label">Description</label>
+                                <textarea placeholder="Type here" class="form-control @error('Description') is-invalid @enderror " rows="4" id="description" name="description"></textarea>
+                                @error('description')
+                                    <span class="invalid-feedback">
+                                        {{ $message }}
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                    </div> <!-- card end// -->
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div>
+                                <label class="form-label">Images</label>
+                                <input class="form-control @error('pics') is-invalid @enderror " type="file" accept="image/*" multiple id="pics"
+                                    name="pics[]">
+
+                                    @error('pics')
+                                    <span class="invalid-feedback">
+                                        {{ $message }}
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                    </div> <!-- card end// -->
+                </div>
+                <div class="col-lg-3">
+                    <div class="card mb-4">
+
+
+                            
+
+                            
+
+                               
+
+                               
+
+
+
+
+                            
+
+                            
+
+
+
+
+                        </div>
+                    </div> <!-- card end// -->
+                </div>
             </div>
-            <div class="card">
-                <div class="card-body">
-                    <div class="row gx-5">
-                        <aside class="col-lg-3 border-end">
-                            <nav class="nav nav-pills flex-lg-column mb-4">
-                                <a class="nav-link active" aria-current="page" href="#">General</a>
-                               
-                            </nav>
-                        </aside>
-                        <div class="col-lg-9">
-                            <section class="content-body p-xl-4">
-                                <form method="post" action="{{ route('back.profile.update') }}">
-                                    @csrf
-                                    <div class="row">
-                                        <div class="col-lg-8">
-                                            <div class="row gx-3">
-                                                <div class="col-6  mb-3">
-                                                    <label class="form-label">name</label>
-                                                    <input class="form-control" type="text" placeholder="Type here" value="{{ $user->name }}">
-                                                </div> <!-- col .// -->
-                                               
-                                                <div class="col-lg-6  mb-3">
-                                                    <label class="form-label">Email</label>
-                                                    <input class="form-control plain-text" type="email" placeholder="example@mail.com" value="{{ $user->email }}" readonly>
-                                                </div> <!-- col .// -->
-                                                <div class="col-lg-6  mb-3">
-                                                    <label class="form-label">Phone</label>
-                                                    <input class="form-control" type="tel" placeholder="+1234567890"  value="{{ $user->phone }}">
-                                                </div> <!-- col .// -->
-                                                <div class="col-lg-12  mb-3">
-                                                    <label class="form-label">Address</label>
-                                                    <input class="form-control" type="text" placeholder="Type here" value="{{ $user->address }}">
-                                                </div> <!-- col .// -->
-                                                
-                                            </div> <!-- row.// -->
-                                        </div> <!-- col.// -->
-                                    </div> <!-- row.// -->
-                                    <br>
-                                    <button class="btn btn-primary" type="submit">Save changes</button>
-                                </form>
-                                <hr class="my-5">
-                               
-                            </section> <!-- content-body .// -->
-                        </div> <!-- col.// -->
-                    </div> <!-- row.// -->
-                </div> <!-- card body end// -->
-            </div> <!-- card end// -->
-        </section> <!-- content-main end// -->
+        </section>
+               </section> <!-- content-main end// -->
         <footer class="main-footer font-xs">
             <div class="row pb-30 pt-15">
                 <div class="col-sm-6">

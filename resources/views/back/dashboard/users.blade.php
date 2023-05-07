@@ -12,7 +12,7 @@
     <meta property="og:url" content="">
     <meta property="og:image" content="">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ url('public/images/theme/favicon.svg') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url('public/images/theme/logo.png') }}">
     <!-- Template CSS -->
     <link href="{{ url('public/css/main.css') }}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -22,8 +22,7 @@
     <div class="screen-overlay"></div>
     <aside class="navbar-aside" id="offcanvas_aside">
         <div class="aside-top">
-            <a href="index.html" class="brand-wrap">
-                <img src="{{ url('public\images\theme\logo.png')}}" class="logo" alt="Olanep Dashboard">
+            <a href="{{ route('dashboard.index') }}" class="brand-wrap">
             </a>
             <div>
                 <button class="btn btn-icon btn-aside-minimize"> <i class="fa fa-bars" aria-hidden="true"></i>
@@ -38,62 +37,37 @@
                         <span class="text">Dashboard</span>
                     </a>
                 </li>
-                <li class="menu-item">
-                    <a class="menu-link" href="{{ route('back.category.index') }}"> <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+                
 
-                        <span class="text">Categories List</span>
+                <li class="menu-item">
+                    <a class="menu-link" href="{{ route('back.movie.index') }}"> <i class="fa fa-film" aria-hidden="true"></i>
+
+
+
+                        <span class="text">Movie List</span>
                     </a>
                 </li>
 
-                <li class="menu-item">
-                    <a class="menu-link" href="{{ route('back.product.index') }}"> <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-
-
-                        <span class="text">products List</span>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a class="menu-link" href="{{ route('back.orders.index') }}"> <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                        <span class="text">Orders</span>
-                    </a>
-                </li>
                 
                 <li class="menu-item">
-                    <a class="menu-link" href="{{ route('back.product.create') }}"> <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                    <a class="menu-link" href="{{ route('back.movie.create') }}"> <i class="fa fa-plus-circle" aria-hidden="true"></i>
                     </i>
-                        <span class="text">Add product</span>
+                        <span class="text">Add Movies</span>
                     </a>
     
                 </li>
                 
                 
                 <li class="menu-item">
-                    <a class="menu-link" href="#"> <i class="fa fa-user" aria-hidden="true"></i>
+                    <a class="menu-link" href="{{ route('back.users.index') }}"> <i class="fa fa-user" aria-hidden="true"></i>
                         <span class="text">Account</span>
                     </a>
                 </li>
-                <li class="menu-item">
-                    <a class="menu-link" href="{{ route('back.reviews.index') }}"> <i class="fa fa-bell" aria-hidden="true"></i>
 
-                        <span class="text">Reviews</span>
-                    </a>
-                </li>
-            
+
             </ul>
             <hr>
-            <ul class="menu-aside">
-                <li class="menu-item has-submenu">
-                    <a class="menu-link" href="#"> <i class="fa fa-cog" aria-hidden="true"></i>
-
-                        <span class="text">Settings</span>
-                    </a>
-                    <div class="submenu">
-                        <a href="page-settings-1.html">Setting sample 1</a>
-                        <a href="page-settings-2.html">Setting sample 2</a>
-                    </div>
-                </li>
-                
-            </ul>
+            
             <br>
             <br>
         </nav>
@@ -109,12 +83,14 @@
                     
                     
                     <li class="dropdown nav-item">
-                        <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownAccount" aria-expanded="false"> {{ auth('cms')->User()->name }}</a>
+                        <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownAccount" aria-expanded="false"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
+
+                            {{ auth('cms')->User()->name }}</a>
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownAccount">
-                            <a class="dropdown-item" href="{{ route('back.profile.edit') }}"><i class="material-icons md-perm_identity"></i>Edit Profile</a>
-                            <a class="dropdown-item" href="{{ route('back.password.edit') }}"><i class="material-icons md-settings"></i>change Password</a>
+                            <a class="dropdown-item" href="{{ route('back.profile.edit') }}"><i class="fa fa-pencil-square" aria-hidden="true"></i>Edit Profile</a>
+                            <a class="dropdown-item" href="{{ route('back.password.edit') }}"><i class="fa fa-key" aria-hidden="true"></i>Change Password</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item text-danger" href="{{ route('back.logout') }}"><i class="material-icons md-exit_to_app"></i>Logout</a>
+                            <a class="dropdown-item text-danger" href="{{ route('back.logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
                         </div>
                     </li>
                 </ul>
@@ -193,7 +169,7 @@
                 <div class="col-sm-6">
                     <script>
                     document.write(new Date().getFullYear())
-                    </script> ©, Olanep- Developed by Dipson Pokharel .
+                    </script> Developed By Dipson Pokharel .
                 </div>
                 <div class="col-sm-6">
                     <div class="text-sm-end">

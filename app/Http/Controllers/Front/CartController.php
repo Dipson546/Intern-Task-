@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Movie;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use App\Models\Product;
@@ -22,9 +23,9 @@ class CartController extends Controller
         }
 
         foreach($cart as $id => $v){
-            $product = Product::find($id);
+            $movie = Movie::find($id);
 
-            $cart[$id]['product'] = $product;
+            $cart[$id]['movie'] = $movies;
 
 
         }
@@ -107,33 +108,5 @@ class CartController extends Controller
 
     }
 
-    public function checkout(Request $request){
-        $cart = json_decode($request->cookie('ecom_cart'),true);
-
-
-        $order = Order::create([
-            'user_id' => $request->user()->id,
-
-
-        ]);
-
-
-        foreach($cart as $id => $v){
-            // Retrieve the product associated with the cart item
-            $product = Product::find($id);
-        
-            // Create an OrderDetail object for the cart item
-            OrderDetail::create([
-                'order_id' => $order->id,
-                'product_id' => $product->id,
-                'price' => $v['price'],
-                'qty' => $v['qty'],
-                'total' => $v['total'],
-            ]);
-        }
-
-        flash('thank you for your order which is currently being processed.');
-
-        return redirect()->route('front.home')->withoutcookie('ecom_cart');
-    }
+    
 }

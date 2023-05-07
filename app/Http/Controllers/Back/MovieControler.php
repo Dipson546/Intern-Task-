@@ -3,21 +3,18 @@
 namespace App\Http\Controllers\Back;
 
 use App\Http\Controllers\Controller;
-use App\Models\About;
-use App\Models\Product;
+use App\Models\Movie;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 
-class AboutController extends Controller
+
+class MovieControler extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $about = About::paginate(10);
+        $movies = Movie::get();
         
-        return view('back.dashboard.about',compact('about'));
+        return view('back.dashboard.movie',compact('movies'));
     }
 
     /**
@@ -26,7 +23,7 @@ class AboutController extends Controller
     public function create()
     {
         
-        return view('back.about.createabout');
+        return view('back.dashboard.createmovie');
     }
 
     /**
@@ -36,17 +33,7 @@ class AboutController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string',
-            'summary' => 'required|string',
             'description' => 'required|string',
-            'product_sku' => 'nullable',
-            'product_color' => 'nullable',
-            'product_size' => 'nullable',
-            'price' => 'required|numeric',
-            'discounted_price' => 'nullable|numeric',
-            'category_id' => 'required|exists:categories,id',
-            'status' => 'required|in:Active,InActive',
-            'popular' => 'required|in:Yes,No',
-            'featured' => 'required|in:Yes,No',
             'pics' => 'required',
             'pics.*' => 'required|image'
             
@@ -65,9 +52,9 @@ class AboutController extends Controller
             $validated['images'][] = $filename;
                   
         }
-        product::create($validated);
+        movie::create($validated);
 
-        return redirect()->route('back.product.index');
+        return redirect()->route('back.movie.index');
 
     }
 
@@ -82,27 +69,26 @@ class AboutController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(About $about)
+    public function edit(Movie $movie)
     {
         
-        return view('back.dashboard.editabout',compact('about'));
+        return view('back.dashboard.editmovie',compact('movie'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, About $about)
+    public function update(Request $request, Movie $movie)
     {
         $validated = $request->validate([
             'name' => 'required',
-            'content' => 'required|string',
-
+            'description' => 'required|string',
 
             'pics' => 'sometimes',
             
         ]);
 
-           $validated['images'] = $about->images;
+           $validated['images'] = $movie->images;
            if($request->hasFile('pics')){
             foreach($validated['pics'] as $pic){
                 $img = Image::make($pic);
@@ -122,20 +108,20 @@ class AboutController extends Controller
            }
 
     
-        $about->update($validated);
+        $movie->update($validated);
 
-        return redirect()->route('back.about.index');
+        return redirect()->route('back.movie.index');
 
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product)
+    public function destroy(Movie $movie)
     {
         
-        $product->delete();
+        $movie->delete();
 
-        return redirect()->route('back.product.index');
+        return redirect()->route('back.movie.index');
     }
 }

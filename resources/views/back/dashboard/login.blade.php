@@ -49,7 +49,7 @@
                 <div class="col-sm-6">
                     <script>
                     document.write(new Date().getFullYear())
-                    </script> ©, olanep - Developed By Dipson Pokharel .
+                    </script> Developed By Dipson Pokharel .
                 </div>
                 <div class="col-sm-6">
                     <div class="text-sm-end">

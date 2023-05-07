@@ -23,7 +23,6 @@
     <aside class="navbar-aside" id="offcanvas_aside">
         <div class="aside-top">
             <a href="{{ route('dashboard.index') }}" class="brand-wrap">
-                <img src="{{ url('public\images\theme\logo.png')}}" class="logo" alt="Olanep Dashboard">
             </a>
             <div>
                 <button class="btn btn-icon btn-aside-minimize"> <i class="fa fa-bars" aria-hidden="true"></i>
@@ -38,30 +37,22 @@
                         <span class="text">Dashboard</span>
                     </a>
                 </li>
-                <li class="menu-item">
-                    <a class="menu-link" href="{{ route('back.category.index') }}"> <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+                
 
-                        <span class="text">Categories List</span>
+                <li class="menu-item">
+                    <a class="menu-link" href="{{ route('back.movie.index') }}"> <i class="fa fa-film" aria-hidden="true"></i>
+
+
+
+                        <span class="text">Movie List</span>
                     </a>
                 </li>
 
-                <li class="menu-item">
-                    <a class="menu-link" href="{{ route('back.product.index') }}"> <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-
-
-                        <span class="text">products List</span>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a class="menu-link" href="{{ route('back.orders.index') }}"> <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                        <span class="text">Orders</span>
-                    </a>
-                </li>
                 
                 <li class="menu-item">
-                    <a class="menu-link" href="{{ route('back.product.create') }}"> <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                    <a class="menu-link" href="{{ route('back.movie.create') }}"> <i class="fa fa-plus-circle" aria-hidden="true"></i>
                     </i>
-                        <span class="text">Add product</span>
+                        <span class="text">Add Movies</span>
                     </a>
     
                 </li>
@@ -72,28 +63,11 @@
                         <span class="text">Account</span>
                     </a>
                 </li>
-                <li class="menu-item">
-                    <a class="menu-link" href="{{ route('back.reviews.index') }}"> <i class="fa fa-bell" aria-hidden="true"></i>
 
-                        <span class="text">Reviews</span>
-                    </a>
-                </li>
 
             </ul>
             <hr>
-            <ul class="menu-aside">
-                <li class="menu-item has-submenu">
-                    <a class="menu-link" href="#"> <i class="fa fa-cog" aria-hidden="true"></i>
-
-                        <span class="text">Settings</span>
-                    </a>
-                    <div class="submenu">
-                        <a href="{{ route('back.about.index') }}">About</a>
-                        <a href="{{ route('home_sliders.index') }}">Home slider</a>
-                    </div>
-                </li>
-                
-            </ul>
+            
             <br>
             <br>
         </nav>
@@ -163,34 +137,15 @@
           
                 <div class="card" style="width: 20rem; background-color:skyblue">
                 <div class="card-body">
-                  <h5 class="card-title"><i class="fa fa-shopping-bag" aria-hidden="true"></i>
-                    Total Products
+                  <h5 class="card-title"><i class="fa fa-film" aria-hidden="true"></i>
+
+                    Total Movies
                   </h5>
-                  <p class="card-text ">{{ $productCount }}</p>
+                  <p class="card-text ">{{ $MovieCount }}</p>
                 </div>
               </div>
               
-              <div class="card" style="width: 20rem; background-color:lightyellow">
-                <div class="card-body">
-                  <h5 class="card-title"><i class="fa fa-shopping-cart" aria-hidden="true"></i>  Total Orders
-                  </h5>
-                  <p class="card-text ">{{ $orderCount }}</p>
-                </div>
-              </div>
-
-
-
-              <div class="card" style="width: 20rem; background-color:red">
-                <div class="card-body">
-                  <h5 class="card-title"><i class="fa fa-bell" aria-hidden="true"></i>
-                 Total Reviews
-                  </h5>
-                  <p class="card-text">{{ $reviewCount }}</p>
-                </div>
-              </div>
-
-
-              
+                            
 
 
             </div>
@@ -210,7 +165,7 @@
                 <div class="col-sm-6">
                     <script>
                     document.write(new Date().getFullYear())
-                    </script> ©, olanep - Developed By Dipson Pokharel .
+                    </script> Developed By Dipson Pokharel .
                 </div>
                 <div class="col-sm-6">
                     <div class="text-sm-end">

@@ -3,25 +3,23 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute as CastsAttribute;
+use Illuminate\Database\Eloquent\Attribute;
+use Illuminate\Database\Eloquent\Model;
 
-
-class About extends Model
+class Movie extends Model
 {
     use HasFactory;
-
-    protected $fillable = [
-        'title',
-        'content',
-        'images'
-
-    ];
-
+    protected $fillable = ['name',  'description',  
+     'images'];
 
     protected $casts = [
         'images' => 'array'
     ];
+
+    public function category() {
+        return $this->belongsTo(Category::class);
+    }
 
 
     public function thumbnail(): CastsAttribute {
@@ -30,4 +28,8 @@ class About extends Model
         });
     }
 
+
+
+
+   
 }
